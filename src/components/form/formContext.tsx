@@ -14,9 +14,9 @@ interface ContextValue {
 const FormContext = createContext<ContextValue>({} as any);
 
 const formMeta: Record<number, { fields: FormField[]; title: string }> = {
-  0: { fields: ticketFields, title: "Select Ticket" },
-  1: { fields: billingFields, title: "Billing Info" },
-  2: { fields: optInFields, title: "Confirm Details" },
+  0: { fields: ticketFields, title: "Select an event and ticket type" },
+  1: { fields: billingFields, title: "Fill in your billing details" },
+  2: { fields: optInFields, title: "Review details and submit!" },
 };
 
 export const FormProvider = ({ children }: { children: ReactNode }) => {

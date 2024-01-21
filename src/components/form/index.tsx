@@ -1,6 +1,7 @@
 import { Form, Space, Button, Card } from "antd";
 import { renderForm } from "./renderForm";
 import useFormContext from "./formContext";
+import Stepper from "./stepper";
 
 export default () => {
   const { fields, setPage, title, hasNext, hasPrev } = useFormContext();
@@ -29,8 +30,9 @@ export default () => {
   return (
     <Card
       title={title}
+      headStyle={{ borderBottom: 0 }}
       style={{
-        width: "800px",
+        maxWidth: "800px",
         margin: "auto",
       }}
       extra={
@@ -50,18 +52,21 @@ export default () => {
         </Space>
       }
     >
-      <Form
-        form={form}
-        name="order"
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 16 }}
-        style={{ maxWidth: 600 }}
-        initialValues={{ remember: true }}
-        //   onFinishFailed={onFinishFailed}
-        autoComplete="off"
-      >
-        {renderForm({ fields })}
-      </Form>{" "}
+      <Space direction="vertical" size="large" style={{ display: "flex" }}>
+        <Stepper />
+        <Form
+          form={form}
+          name="order"
+          labelCol={{ span: 8 }}
+          wrapperCol={{ span: 16 }}
+          style={{ maxWidth: 600 }}
+          initialValues={{ remember: true }}
+          //   onFinishFailed={onFinishFailed}
+          autoComplete="off"
+        >
+          {renderForm({ fields })}
+        </Form>
+      </Space>
     </Card>
   );
 };

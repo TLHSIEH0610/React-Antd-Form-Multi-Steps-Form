@@ -6,22 +6,30 @@ interface ContextValue {
   page: number;
   fields: FormField[];
   setPage: (cb: (page: number) => number) => void;
+  title: string;
+  hasNext: boolean;
+  hasPrev: boolean;
 }
 
 const FormContext = createContext<ContextValue>({} as any);
 
-const formFields: Record<number, FormField[]> = {
-  0: billingFields,
-  1: ticketFields,
-  2: optInFields,
+const formMeta: Record<number, { fields: FormField[]; title: string }> = {
+  0: { fields: ticketFields, title: "Select Ticket" },
+  1: { fields: billingFields, title: "Billing Info" },
+  2: { fields: optInFields, title: "Confirm Details" },
 };
 
 export const FormProvider = ({ children }: { children: ReactNode }) => {
   const [page, setPage] = useState(0);
-  const fields = formFields[page];
+  const fields = formMeta[page].fields;
+  const title = formMeta[page].title;
+  const hasNext = page !== Object.keys(formMeta).length - 1;
+  const hasPrev = page !== 0;
 
   return (
-    <FormContext.Provider value={{ page, fields, setPage }}>
+    <FormContext.Provider
+      value={{ page, fields, setPage, title, hasNext, hasPrev }}
+    >
       {children}
     </FormContext.Provider>
   );

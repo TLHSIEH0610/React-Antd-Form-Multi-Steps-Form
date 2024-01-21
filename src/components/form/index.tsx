@@ -1,8 +1,14 @@
-import { Form } from "antd";
+import { Form, Space, Button } from "antd";
 import { renderForm } from "./renderForm";
-import { billingFields } from "./fields";
+import useFormContext from "./formContext";
 
 export default () => {
+  const { fields, setPage } = useFormContext();
+
+  const nextPage = () => setPage((prev) => prev - 1);
+
+  const prevPage = () => setPage((prev) => prev + 1);
+
   return (
     <Form
       name="basic"
@@ -14,7 +20,17 @@ export default () => {
       //   onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
-      {renderForm({ fields: billingFields })}
+      {renderForm({ fields })}
+      <Form.Item wrapperCol={{ span: 12, offset: 6 }}>
+        <Space>
+          <Button type="primary" onClick={prevPage}>
+            Back
+          </Button>
+          <Button type="primary" onClick={nextPage}>
+            Next
+          </Button>
+        </Space>
+      </Form.Item>
     </Form>
   );
 };

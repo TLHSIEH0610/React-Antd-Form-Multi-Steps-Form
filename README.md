@@ -9,7 +9,7 @@ An example of a multi-step form built with React and Ant-Design, including basic
 Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/TLHSIEH0610/React-Form-Multi-Steps.git
+git clone https://github.com/TLHSIEH0610/React-Antd-Form-Multi-Steps-Form.git
 ```
 Navigate to the project folder:
 
@@ -26,4 +26,4 @@ Start the project:
 ```
 npm run dev
 ```
-This will launch the development server, and you can view the project by navigating to http://localhost:3000 in your web browser.
+This will launch the development server, and you can view the project by navigating to http://localhost:5173 in your web browser.

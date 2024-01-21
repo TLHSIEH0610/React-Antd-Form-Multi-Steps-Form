@@ -7,6 +7,7 @@ export const renderForm = ({ fields }: { fields: FormField[] }) =>
       label={field.label}
       name={field.name as string}
       key={field.name}
+      valuePropName={field.type === "checkbox" ? "checked" : undefined}
       rules={
         field.required
           ? [{ required: true, message: "This is a required field" }]

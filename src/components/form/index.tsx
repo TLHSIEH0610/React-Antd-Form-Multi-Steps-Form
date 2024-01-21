@@ -1,4 +1,6 @@
-import { Button, Checkbox, Form, Input } from "antd";
+import { Form } from "antd";
+import { renderForm } from "./renderForm";
+import { billingFields } from "./fields";
 
 export default () => {
   return (
@@ -8,9 +10,11 @@ export default () => {
       wrapperCol={{ span: 16 }}
       style={{ maxWidth: 600 }}
       initialValues={{ remember: true }}
-      // onFinish={onFinish}
-      // onFinishFailed={onFinishFailed}
+      //   onFinish={onFinish}
+      //   onFinishFailed={onFinishFailed}
       autoComplete="off"
-    ></Form>
+    >
+      {renderForm({ fields: billingFields })}
+    </Form>
   );
 };

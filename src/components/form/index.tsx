@@ -2,6 +2,7 @@ import { Form, Space, Button, Card } from "antd";
 import { renderForm } from "./renderForm";
 import useFormContext from "./formContext";
 import Stepper from "./stepper";
+import Details from "./details";
 
 export default () => {
   const { fields, setPage, title, hasNext, hasPrev } = useFormContext();
@@ -25,6 +26,11 @@ export default () => {
     } catch (e) {
       console.error(e);
     }
+  };
+
+  const renderDetails = () => {
+    const formData = form.getFieldsValue(true);
+    return;
   };
 
   return (
@@ -54,13 +60,14 @@ export default () => {
     >
       <Space direction="vertical" size="large" style={{ display: "flex" }}>
         <Stepper />
+        {!hasNext && <Details form={form} />}
         <Form
           form={form}
           name="order"
           labelCol={{ span: 8 }}
           wrapperCol={{ span: 16 }}
           style={{ maxWidth: 600 }}
-          initialValues={{ remember: true }}
+          initialValues={{}}
           //   onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
